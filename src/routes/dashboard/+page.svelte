@@ -1,8 +1,43 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 	import Head from '$lib/components/Head.svelte';
+	import { onMount } from 'svelte';
 
 	export let data: PageData;
+
+	// from https://stackoverflow.com/questions/33078406/
+	const nextMonday = new Date();
+	nextMonday.setDate(nextMonday.getDate() + ((1 + 7 - nextMonday.getDay()) % 7 || 7));
+	nextMonday.setHours(0, 0, 0, 0);
+
+	let countdown =
+		'on ' +
+		nextMonday.toLocaleString('en-US', {
+			weekday: 'short',
+			year: 'numeric',
+			month: 'short',
+			day: 'numeric',
+			hour: 'numeric',
+			minute: 'numeric',
+			second: 'numeric'
+		});
+
+	onMount(() => {
+		const interval = setInterval(() => {
+			const now = new Date();
+			const diff = nextMonday.getTime() - now.getTime();
+			const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+			const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+			const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+			const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+			countdown = `in ${days} day${days === 1 ? '' : 's'}, ${hours} hour${
+				hours === 1 ? '' : 's'
+			}, ${minutes} minute${minutes === 1 ? '' : 's'}, and ${seconds} second${
+				seconds === 1 ? '' : 's'
+			}`;
+		}, 500);
+		return () => clearInterval(interval);
+	});
 </script>
 
 <Head title="Dashboard | CVHS Senior Assassins" />
@@ -21,6 +56,7 @@
 			day: 'numeric'
 		})}. You are on team {data.team}.
 	</p>
+	<p class="countdown">This round ends {countdown}!</p>
 	<p class="reminders"><strong>Reminders:</strong></p>
 	<ul>
 		<li>Only use non-battery powered Nerf style guns that fire foam darts with rubber tips.</li>
@@ -70,7 +106,6 @@
 <style>
 	img {
 		height: 84px;
-		/* margin-bottom: 32px; */
 	}
 	header {
 		display: flex;
@@ -87,6 +122,9 @@
 	p {
 		margin-top: 16px;
 		margin-bottom: 4px;
+	}
+	.countdown {
+		font-variant-numeric: tabular-nums;
 	}
 	ul li + li {
 		margin-top: 8px;

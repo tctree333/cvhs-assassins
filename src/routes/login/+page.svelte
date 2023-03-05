@@ -1,20 +1,15 @@
 <script lang="ts">
 	import Head from '$lib/components/Head.svelte';
+	import type { ActionData } from './$types';
 
-	import { browser } from '$app/environment';
-	import { page } from '$app/stores';
-
-	const error = $page.url.searchParams.get('error');
-	if (error && browser) {
-		window.history.replaceState(null, '', '/login');
-	}
+	export let form: ActionData;
 </script>
 
 <Head title="Login | CVHS Senior Assassins" />
 
 <main class="main">
 	<h1>CVHS Senior Assassins Login</h1>
-	<form method="post" action="/api/login">
+	<form method="post">
 		<label>
 			User ID: <input type="text" name="user" required />
 		</label>
@@ -23,8 +18,8 @@
 		</label>
 		<button class="btn" type="submit">Login</button>
 	</form>
-	{#if error}
-		<p class="error"><strong>Error:</strong> {error}</p>
+	{#if form?.errorMessage}
+		<p class="error"><strong>Error:</strong> {form.errorMessage}</p>
 	{/if}
 </main>
 

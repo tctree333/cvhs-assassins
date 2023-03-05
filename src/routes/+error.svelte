@@ -9,9 +9,10 @@
 	<h1>An error occurred.</h1>
 	<p class="error">{$page.status}: {$page.error?.message}</p>
 
-	<p>If this error persists, please let a Godfather know.</p>
+	<p>If this error persists, please DM @cvhsseniorassassins2023 on Insta.</p>
 
 	<p><a href="/dashboard">Back to dashboard.</a></p>
+	<p><a href="/logout">Log Out</a></p>
 </main>
 
 <style>

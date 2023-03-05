@@ -90,7 +90,7 @@
 		<h2 class="removed">You have been eliminated! 💀</h2>
 	{:else if data.disqualified}
 		<h2 class="removed">You have been disqualified!</h2>
-	{:else}
+	{:else if data.targets.length > 0}
 		<h2>Target: {data.targetTeam}</h2>
 		<ul class="targets">
 			{#each data.targets as target}
@@ -100,6 +100,8 @@
 				</li>
 			{/each}
 		</ul>
+	{:else}
+		<h2>Targets are currently being assigned.</h2>
 	{/if}
 </main>
 

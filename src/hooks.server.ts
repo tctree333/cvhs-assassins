@@ -17,7 +17,7 @@ SentryNode.setTag('svelteKit', 'server');
 
 // use handleError to report errors during server-side data loading
 export const handleError = (({ error, event }) => {
-	SentryNode.captureException(error, { contexts: { sveltekit: { event } } });
+	SentryNode.captureException(error, { contexts: { sveltekit: { ...event } } });
 
 	return {
 		message: (error as { message: string }).message

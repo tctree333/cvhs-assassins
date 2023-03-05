@@ -13,6 +13,7 @@ export async function getDoc() {
 			private_key: GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n')
 		});
 	}
+	doc.resetLocalCache();
 	await doc.loadInfo();
 	return doc;
 }

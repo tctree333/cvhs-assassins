@@ -48,7 +48,8 @@ export async function getUserInfo(userId: string): Promise<
 		.map((row) => ({
 			name: row['Name'],
 			eliminated: row['Eliminated'] === 'TRUE',
-			disqualified: row['Disqualified'] === 'TRUE'
+			disqualified: row['Disqualified'] === 'TRUE',
+			teamName: row['Team Name']
 		}));
 
 	return {
@@ -58,6 +59,6 @@ export async function getUserInfo(userId: string): Promise<
 		disqualified: user['Disqualified'] === 'TRUE',
 		advancing: user['Advancing'] === 'TRUE',
 		targets,
-		targetTeam: targetTeam['Target Team']
+		targetTeam: targets[0].teamName
 	};
 }

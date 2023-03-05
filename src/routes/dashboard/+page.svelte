@@ -8,7 +8,11 @@
 <Head title="Dashboard | CVHS Senior Assassins" />
 
 <main class="main">
-	<h1>Welcome {data.name}!</h1>
+	<header>
+		<h1>Welcome {data.name}!</h1>
+		<span class="spacer" />
+		<a class="btn" href="/logout">Log Out</a>
+	</header>
 	<p>
 		Today is {new Date().toLocaleDateString('en-US', {
 			weekday: 'long',
@@ -64,6 +68,14 @@
 </main>
 
 <style>
+	header {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 32px;
+		gap: 16px;
+	}
 	h2 {
 		margin-top: 32px;
 		margin-bottom: 12px;

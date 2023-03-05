@@ -1,2 +1,5 @@
 http://slaying.men/* https://cvhs.slaying.men/:splat 302!
 https://slaying.men/* https://cvhs.slaying.men/:splat 302!
+
+/js/script.js https://plausible.io/js/script.js 200
+/api/event https://plausible.io/api/event 200

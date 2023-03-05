@@ -59,6 +59,6 @@ export async function getUserInfo(userId: string): Promise<
 		disqualified: user['Disqualified'] === 'TRUE',
 		advancing: user['Advancing'] === 'TRUE',
 		targets,
-		targetTeam: targets[0].teamName
+		targetTeam: targets[0]?.teamName
 	};
 }

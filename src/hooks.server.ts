@@ -1,7 +1,28 @@
 import * as jose from 'jose';
-import { JWT_SECRET } from '$env/static/private';
+import { JWT_SECRET, SENTRY_DSN } from '$env/static/private';
 
-import type { Handle } from '@sveltejs/kit';
+import type { Handle, HandleServerError } from '@sveltejs/kit';
+
+import * as SentryNode from '@sentry/node';
+import '@sentry/tracing';
+
+SentryNode.init({
+	dsn: SENTRY_DSN,
+	tracesSampleRate: 1.0,
+	// Add the Http integration for tracing
+	integrations: [new SentryNode.Integrations.Http()]
+});
+
+SentryNode.setTag('svelteKit', 'server');
+
+// use handleError to report errors during server-side data loading
+export const handleError = (({ error, event }) => {
+	SentryNode.captureException(error, { contexts: { sveltekit: { event } } });
+
+	return {
+		message: (error as { message: string }).message
+	};
+}) satisfies HandleServerError;
 
 export const handle: Handle = async ({ event, resolve }) => {
 	const sessionCookie = event.request.headers

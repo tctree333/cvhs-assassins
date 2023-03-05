@@ -9,10 +9,10 @@
 
 <main class="main">
 	<header>
-		<h1>Welcome {data.name}!</h1>
-		<span class="spacer" />
+		<img src="/logo.png" alt="CVHS Senior Assassins Logo" />
 		<a class="btn" href="/logout">Log Out</a>
 	</header>
+	<h1>Welcome {data.name}!</h1>
 	<p>
 		Today is {new Date().toLocaleDateString('en-US', {
 			weekday: 'long',
@@ -68,12 +68,16 @@
 </main>
 
 <style>
+	img {
+		height: 84px;
+		/* margin-bottom: 32px; */
+	}
 	header {
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: space-between;
 		align-items: center;
-		margin-bottom: 32px;
+		margin-bottom: 36px;
 		gap: 16px;
 	}
 	h2 {

@@ -8,6 +8,9 @@
 <Head title="Login | CVHS Senior Assassins" />
 
 <main class="main">
+	<div>
+		<img src="/logo.png" alt="CVHS Senior Assassins Logo" />
+	</div>
 	<h1>CVHS Senior Assassins Login</h1>
 	<form method="post">
 		<label>
@@ -26,6 +29,14 @@
 <style>
 	main.main {
 		max-width: 540px;
+	}
+	div {
+		display: flex;
+		justify-content: center;
+	}
+	img {
+		height: 96px;
+		margin: 32px 0;
 	}
 	h1 {
 		margin-bottom: 32px;

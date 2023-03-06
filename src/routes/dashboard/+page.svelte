@@ -81,6 +81,7 @@
 		</li>
 		<li>Have fun!</li>
 	</ul>
+	<p><a href="https://docs.google.com/spreadsheets/d/1CNCSxkuq3gCt7GTFDBeT7zR8j3Oey_-jecvoTXVL95k/edit">View the current bracket!</a></p>
 
 	{#if data.advancing}
 		<h2 class="advancing">You are advancing to the next round!</h2>

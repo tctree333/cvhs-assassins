@@ -2,6 +2,8 @@
 
 A site for the CVHS Senior Assassins game. This website allows players to track progress and identify targets, controlled using a master Google Spreadsheet for ease of admin access.
 
+I was commissioned to build this site by the people organizing the game in order to simplify game management. I'm not entirely sure how the game turned out in the end, but it was interesting to build. Using Google Sheets as an admin interface makes it much easier for people to use, and directly accessing the API using a library is faster than proxying through Google Apps Script, which I used to do.
+
 ## Setup
 
 First, generate a service account for Google API access. See the [`google-spreadsheet` docs](https://theoephraim.github.io/node-google-spreadsheet/#/getting-started/authentication?id=service-account) for more information.
